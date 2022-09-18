@@ -27,19 +27,66 @@ const carta03 = {
 
 const cartas = [carta01, carta02, carta03];
 let cartaMaquina;
-let jogador;
+let cartaJogador;
 
 function  sortearCarta() {
-   let numeroCartaMaquina = parseInt(Math.random() * 3)
-   let numeroJogador = parseInt(Math.random() * 3)
+    let numeroCartaMaquina = parseInt(Math.random() * 3)
+        cartaMaquina = cartas[numeroCartaMaquina];
+    let numeroCartaJogador = parseInt(Math.random() * 3)
 
-    if(numeroJogador == numeroCartaMaquina) {
-        while(numeroJogador == numeroCartaMaquina) {
+    if(numeroCartaJogador == numeroCartaMaquina) {
+        while(numeroCartaJogador == numeroCartaMaquina) {
             console.log("repetiu")
-            numeroJogador = parseInt(Math.random() * 3)
+            numeroCartaJogador = parseInt(Math.random() * 3)
        }    
     }
 
-    console.log(cartas[numeroCartaMaquina])
-    console.log(cartas[numeroJogador])
+    cartaJogador = cartas[numeroCartaJogador];
+
+    console.log(cartaJogador)
+
+    document.getElementById("btnSortear").disabled = true;
+    document.getElementById("btnJogar").disabled = false;
+
+    exibirOpcoes();
 }
+
+function exibirOpcoes() {
+    const opcoes = document.getElementById("opcoes");
+    let opcoesTexto = ""
+
+    for(let atributo in cartaJogador.atributos) {
+        opcoesTexto += 
+            "<input type='radio' name='atributo' value='"+atributo+"'>" + atributo;
+    }
+    opcoes.innerHTML = opcoesTexto;
+}
+
+function obtemAtributoSelecionado() {
+    let radioAtributos = document.getElementsByName("atributo");
+
+    for(let i = 0; i < radioAtributos.length; i++) {
+        if(radioAtributos[i].checked == true) {
+            return radioAtributos[i].value
+        }
+    }
+}
+
+function jogar() {
+    let atributoSelecionado = obtemAtributoSelecionado();
+    let elementoResultado = document.getElementById("resultado");
+    let valorCartaJogador = cartaJogador.atributos[atributoSelecionado] 
+    let valorCartaMaquina = cartaMaquina.atributos[atributoSelecionado]
+
+    if(valorCartaJogador > valorCartaMaquina) {
+        elementoResultado.innerHTML = "Venceu :)"
+    } else if(valorCartaMaquina > valorCartaJogador) {
+        elementoResultado.innerHTML = "voce perdeu '-'"
+    } else {
+        elementoResultado.innerHTML = "empate :/"
+    }
+
+    console.log(valorCartaMaquina )
+
+  }
+  
