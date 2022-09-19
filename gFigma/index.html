@@ -9,20 +9,32 @@
 </head>
 <body>
     <div class="container">
-    <header class="perfil">
-        <img class="perfil-foto" src="https://github.com/wagnerchr.png"/>
-        <div class="perfil-titulo">  
-            <h1>Wagner Christos</h1>
-            <h3>#imersaodev</h3>
-        </div>
-    </header>
+        <!-- Cabecalho -->
+        <header class="cabecalho">
+            <!-- Perfil  -->
+            <div class="perfil">
+                <img class="perfil-foto" src="https://github.com/wagnerchr.png"/>
+                <div class="perfil-titulo">  
+                    <h1>Wagner Christos</h1>
+                    <h3>Estudante de programação <span>#imersaodev</span> </h3>
+                </div>
+            </div>
+            <!-- Botão para alterar tema -->
+            <div class="tema">
+                <button onClick="mudaTema()">Alterar Tema</button>
+            </div>
+        </header>
 
-    <main class="projetos">
-        <ul>Projetos</ul>
-            <li><a href="https://github.com/wagnerchr/ImersaoAlura/tree/main/aConversorMoedas">Conversor de moeda</a> </li>
+
+    <main class="portifolio">
+        <div class="projetos">
+        <ul class="projetos-titulo">Projetos</ul>
+            <li class="projetos-item">
+                <a href="https://github.com/wagnerchr/ImersaoAlura/tree/main/aConversorMoedas">Conversor de moeda</a> </li>
+        </div>
     </main>
 </div>
     
-    
+    <script src="index.js"></script>
 </body>
 </html>

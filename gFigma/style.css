@@ -7,23 +7,29 @@ body {
 }
 
 .container {
+    margin: 64px;
+    padding: 64px;
     background: #ECF4FF;
     color: #1C1C1C;
-    margin: 64px;
     border-radius: 20px;
     box-shadow: 6px 6px 6px #0E1D2F;
-    padding: 64px;
+}
+
+/* Cabecalho */
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between; /* Espaço entre foto e titulo e o botão */
 }
 
 .perfil {
-    display: felx;
-    align-items: center;
+    display: flex;
 }
 
 .perfil-foto {
+    max-width: 160px;
     border-radius: 400px;
-    max-height: 160px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .perfil-titulo {
@@ -40,8 +46,74 @@ body {
     font-size: 24px;
 }
 
+.perfil-titulo span {
+    font-weight: bold;
+    color: #6B87A9;
+}
+
+.tema button {
+    align-self: flex-end; /* No final */
+    font-size: 16px;
+    padding: 8px 16px; /* topo-embaixo, esquerda-direita*/
+    background: #ECF4FF;
+    box-sizing: border-box;
+    border-radius: 100px;
+    border: 2px solid #0E1D2F;
+}
+
+.portfolio {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+  }
+
+/* Projetos  */
 .projetos {
     display: flex;
     flex-direction: column;
     /* align-items: center; */
+    background: linear-gradient(230.65deg, #499CFE 27.48%, #9CC8FC 83.19%);
+    margin-top: 32px;
+    padding: 32px;
+    box-shadow: 2px 2px 4px rgba(16, 16, 16, 0.42);
+    border-radius: 20px;
+}
+
+.projetos-titulo {
+    list-style: none;
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.projetos-item {
+    list-style-type: none;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 48px;
+}
+
+.projetos-item a {
+    color: #1C1C1C;
+    text-decoration: none;
+}
+
+/* onClick do botao -> mudaTema() */
+.dark {
+    background: linear-gradient(236.85deg, #375B86 27.26%, #6B87A9 96.03%);
+}
+
+.dark .container {
+    background: #333439;
+    color: #f6f6f6;
+}
+
+.dark .projetos {
+    color: #1C1C1C;
+}
+
+.dark .tema button {
+    background: #1C1C1C;
+    color: #FFFFFF;
+    border: 2px solid #F7F7F7;
 }
