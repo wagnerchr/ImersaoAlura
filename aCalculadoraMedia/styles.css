@@ -1,36 +1,103 @@
 body {
     font-family: 'Roboto Mono',monospace;
-    min-height: 400px;
-    background-image: url('https://caelum-online-public.s3.amazonaws.com/imersao-dev-3/bg.png');
+    background-image: url('https://images.unsplash.com/photo-1535982330050-f1c2fb79ff78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29sbGVnZXxlbnwwfHwwfHw%3D&w=1000&q=80');
     background-color: #000000;
-    background-size: 80vh;
-    background-position: center bottom;
+
+    min-height: 90%;
+    color: F0FFFF;
+    /* background-size: 80vh; */
+    /* background-position: center bottom; */
+    background-size: cover;
     background-repeat: no-repeat;
+
+    
   }
   
   .container {
     text-align: center;
     padding: 20px;
-    height: 100vh;
+    /* height: 60vh; */
   }
   
   .page-title {
-    color:#ffffff;
+    font-size: 62px;
     margin: 0 0 5px;
   }
   
   .page-subtitle {
-    color:#ffffff;
+    font-size: 24px;
     margin-top: 5px;
   }
-  
-  .page-logo {
-    width: 200px;
-  }
-  
+ 
   .alura-logo {
     width: 40px;
     position: absolute;
     top: 10px;
     right: 10px;
+  }
+
+  .totalTests-label {
+    font-size: 24px;
+  }
+
+  button {
+    margin-top: 12px;
+    padding: 4px 8px;
+    border-radius: 10px;
+  }
+
+  .test-box {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+
+    /* justify-content: space-around; */
+    justify-content: center;
+    
+    flex-direction: row;
+  }
+  .test-div {
+    height: 120px;
+    width: 120px;
+    margin: 30px;
+
+    background-color: #CCC;
+    background-image: url('https://s1.static.brasilescola.uol.com.br/vestibular/2020/03/prova-do-enem.jpg');
+    background-position: center;
+    border-radius: 10px;
+    border: 1px groove black;
+
+    
+
+    text-align: center;
+    
+
+   
+    
+  }
+
+  .test-label {
+    white-space: pre;
+    text-align: center;
+    justify-content: center;
+    color: black;
+    
+
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 0.5px 0.5px;
+  }
+
+  .test-input {
+    width: 55px;
+    height: 30px;
+    margin-top: 25px;
+
+    background-color: #CCC;
+    border-radius: 10px;
+    border: none;
+
+    text-align: center;
+    font-size: 20px;
+    
   }
