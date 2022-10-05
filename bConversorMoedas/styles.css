@@ -1,9 +1,9 @@
 body {
     font-family: "Roboto Mono", monospace;
     min-height: 400px;
-    background-image: url("https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-1-conversor-de-moedas.png");
+    background-image: url("https://images.unsplash.com/photo-1626677385895-a37ef9c5e630?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80");
     background-color: #000000;
-    background-size: 100vh;
+    background-size: 100%;
     background-position: center bottom;
     background-repeat: no-repeat;
   }
