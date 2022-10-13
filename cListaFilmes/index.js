@@ -3,33 +3,39 @@ const listaFilmes = ["https://upload.wikimedia.org/wikipedia/pt/7/79/Yesterday_%
                         "https://upload.wikimedia.org/wikipedia/pt/1/1b/Schoolrockposter.jpg"
                         ];
 
-DisplayLista();
 
-// Só para mostrar os filmes inseridos na imersão
+
+    DisplayLista();
+
+// Carrega array com filmes
     function DisplayLista() {
 
-        for(filme of listaFilmes) {
+        // Limpa div filmes
+        document.getElementById("filmes").innerHTML = ''; 
 
-            let film = document.createElement('div');   
-            film.classList.add("filme");
-            film.innerHTML = `<img src="${filme}"/>`
-            document.getElementById("filmes").appendChild(film); 
+        // Adiciona novamente filmes
+        for(filme of listaFilmes) {
+                
+                let film = document.createElement('div');  
+                
+
+                film.classList.add("filme");
+                film.innerHTML += `<img src="${filme}"/>`
+                document.getElementById("filmes").appendChild(film); 
+
+                console.log("aaaa" + listaFilmes)
+
+       }}
         
-            }   
-    } 
-//
 // Adiciona Filme novo 
     function addFilme() {
         const input = document.getElementById('add-input').value;
 
         if(!listaFilmes.includes(input)) {
             if(input.endsWith(".png") | input.endsWith(".jpg")) {
-            listaFilmes.push(input);
-            
-            let film = document.createElement('div');   
-            film.classList.add("filme");
-            film.innerHTML = `<img src="${input}"/>`
-            document.getElementById("filmes").appendChild(film); 
+                
+                listaFilmes.push(input);
+                DisplayLista();
             }
         }
     }
