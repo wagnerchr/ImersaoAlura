@@ -31,7 +31,7 @@ h2 {
     color: white;
 }
 
-#carta-jogador, #carta-maquina {
+/* .carta-jogador, #carta-maquina {
     width: 360px;
     height: 500px;
     overflow: auto;
@@ -46,11 +46,8 @@ h2 {
     background-position-x: 5px;
     background-position-y: 10px;
     border-radius: 33px;
-}
+} */
 
-#carta-jogador h3 {
-    text-align: center;
-}
 
 .carta-imagem {
     border: 1px solid black;
@@ -93,11 +90,12 @@ form {
     flex-direction: column;
 }
 
-.wrapper {
+/* .wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     width: 100%;
-}
+} */
 
 .carta-subtitle {
     z-index: 2;
@@ -108,10 +106,31 @@ form {
     text-transform: uppercase;
 }
 
+
 #cartas {
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+#deck-jogador {
+    height: 600px;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+    
+}
+
+.carta-jogador {
+    /* background-color: aliceblue; */
+    width: 400px;
+    height: 500px;
+    margin: 50px;
+}
+
+.carta-jogador h3 {
+    text-align: center;
+    
 }
 
 .carta-status p {

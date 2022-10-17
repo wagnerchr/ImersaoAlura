@@ -1,6 +1,5 @@
 
 // Cartas
-
 const carta01 = {
     nome: "Bulbas",
     imagem: "https://img.elo7.com.br/product/zoom/31CCAE3/escultura-em-papel-pokemon-bulbassauro-com-base-em-pvc-actionfigure.jpg",
@@ -31,34 +30,119 @@ const carta03 = {
     }
 }
 
+const carta04 = {
+nome: "JPG ROBADO",
+imagem: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg",
+atributos: {
+ataque: 10,
+defesa: 100000,
+magia: 0
+} 
+}
+
+const carta05 = {
+nome: "JPG ROBADO",
+imagem: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg",
+atributos: {
+ataque: 10,
+defesa: 100000,
+magia: 0
+} 
+}
+
+const carta06 = {
+nome: "JPG ROBADO",
+imagem: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg",
+atributos: {
+ataque: 10,
+defesa: 100000,
+magia: 0
+
+} 
+}
+
 // --- 
 
-const cartas = [carta01, carta02, carta03];
+let cartas = [carta01, carta02, carta03, carta04, carta05, carta06];
+let ncartas = cartas.length;
+
 let cartaMaquina;
 let cartaJogador;
 
-function  sortearCarta() {
-    let numeroCartaMaquina = parseInt(Math.random() * 3)
-        cartaMaquina = cartas[numeroCartaMaquina];
-    let numeroCartaJogador = parseInt(Math.random() * 3)
+const deckJogador = [];
+const deckComputador = [];
 
-    if(numeroCartaJogador == numeroCartaMaquina) {
-        while(numeroCartaJogador == numeroCartaMaquina) {
-            console.log("repetiu")
-            numeroCartaJogador = parseInt(Math.random() * 3)
-       }    
+
+// Sortear cartas
+function  sortearCarta() {
+
+    // Distribuir Cartas
+    for(let i = 0; i < 3; i++) {
+
+        let numeroCartaJogador = parseInt(Math.random() * ncartas)  // sorteia index
+        deckJogador[i] = cartas[numeroCartaJogador];    // add carta ao deck
+        cartas.splice(numeroCartaJogador, 1); // remove carta da pilha
+        ncartas--;
+
+        let numeroCartaComputador = parseInt(Math.random() * ncartas)
+        deckComputador[i] = cartas[numeroCartaComputador];
+        cartas.splice(numeroCartaComputador, 1); // remove carta da pilha
+        ncartas--;  // index -1 da pilha
     }
 
-    cartaJogador = cartas[numeroCartaJogador];
+    // Mostrando Cartas
+        const cartaJ = [];
+        let divJogador = document.getElementById('deck-jogador');
 
-    console.log(cartaJogador)
+    for(let i = 0; i < deckJogador.length; i++) {
 
+        cartaJ[i] = document.createElement('div');
+        cartaJ[i].classList.add('carta-jogador')
+
+        let imgi = document.createElement('img');
+        imgi.src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png";
+        
+        let h3 = document.createElement('h3')
+
+        cartaJ[i].appendChild(imgi);
+        cartaJ[i].appendChild(h3);
+
+        divJogador.appendChild(cartaJ[i]);
+    }
+
+   
+    
+
+//     <div class="carta-jogador" >
+//     <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" />
+//     <h3></h3>
+// </div>
+// <div class="carta-jogador" >
+//     <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" />                 
+//     <h3></h3>
+// </div>
+// <div class="carta-jogador" >
+//     <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" />
+        
+//     <h3></h3>
+
+
+
+
+
+
+
+    // console.log(cartaJogador)
+
+/*
     document.getElementById("btnSortear").disabled = true;
     document.getElementById("btnJogar").disabled = false;
-
+*/
     // exibirOpcoes();
-    exibirCartaJogador();
+    //exibirCartaJogador();
 }
+
+
 
 // function exibirOpcoes() {
 //     const opcoes = document.getElementById("opcoes");
@@ -82,6 +166,7 @@ function obtemAtributoSelecionado() {
 }
 
 function jogar() {
+
     let atributoSelecionado = obtemAtributoSelecionado();
     let divResultado = document.getElementById("resultado")
     // let elementoResultado = document.getElementById("resultado");
