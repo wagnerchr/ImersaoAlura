@@ -110,7 +110,7 @@ function  sortearCarta() {
         divJogador.appendChild(cartaJ[i]);
     }
 
-    divJogador.style.display = "block"
+   
     
 
 //     <div class="carta-jogador" >
@@ -140,11 +140,6 @@ function  sortearCarta() {
 */
     // exibirOpcoes();
     //exibirCartaJogador();
-}
-
-function criaCartas() {
-
-
 }
 
 
