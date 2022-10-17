@@ -48,9 +48,7 @@ h2 {
     border-radius: 33px;
 }
 
-#carta-jogador h3 {
-    text-align: center;
-}
+
 
 .carta-imagem {
     border: 1px solid black;
@@ -95,6 +93,7 @@ form {
 
 .wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     width: 100%;
 }
@@ -108,10 +107,22 @@ form {
     text-transform: uppercase;
 }
 
+
 #cartas {
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+#deck-jogador {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.carta-jogador h3 {
+    text-align: center;
 }
 
 .carta-status p {
