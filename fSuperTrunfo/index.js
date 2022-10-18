@@ -113,7 +113,7 @@ function  sortearCarta() {
         
         for(let atributo in deckJogador[i].atributos) {
 
-
+//dsa
             let atr = "";
 
             atr = "<input type='radio' name='atributo' value='"+atributo+ "'>" + atributo + " " + deckJogador[i].atributos[atributo] + "</br>";
