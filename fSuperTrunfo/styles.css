@@ -132,8 +132,10 @@ form {
     
     position: relative;
 
-    background-image: url("https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png");
-    background-repeat: no-repeat;
+    /* background-image: url("https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png");
+    background-repeat: no-repeat; */
+
+  
 
 }
 
@@ -146,14 +148,47 @@ form {
 
     color: #ffffff;
     font-weight: bold;
+
+   
     
 }
 
-.carta-jogador img {
+/* .carta-jogador img {
     width: 373px;
     height: 373px;
     position: relative;
+} */
+
+.card-photo {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+    width: 335px;
+    height: 300px;
+
+    z-index: -1;
 }
+.div-atributos {
+    position: absolute;
+    top: 62%;
+    left: 32px;
+
+    width: 312px;
+    height: 152px;
+    
+    color: white;
+    
+    
+}
+
+.div-atributos p {
+    text-align: start;
+ 
+    margin: 10px 10px 5px 10px;
+}
+
+
 
 .carta-status p {
     margin-bottom: 2rem;

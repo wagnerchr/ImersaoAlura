@@ -98,22 +98,64 @@ function  sortearCarta() {
 
         cartaJ[i] = document.createElement('div');
         cartaJ[i].classList.add('carta-jogador')
+        
 
-        // let imgi = document.createElement('img');
-        // imgi.src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png";
+        let imgi = document.createElement('img');
+
+        imgi.src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png";
         let img = document.createElement('img');
         img.src= deckJogador[i].imagem;
+        img.classList.add('card-photo')
+
+        let divAtributos = document.createElement('div');
+        divAtributos.classList.add('div-atributos');
+
         
+        for(let atributo in deckJogador[i].atributos) {
+
+
+            let atr = "";
+
+            atr = "<input type='radio' name='atributo' value='"+atributo+ "'>" + atributo + " " + deckJogador[i].atributos[atributo] + "</br>";
+
+
+            let strr = document.createElement('p');
+            strr.innerHTML = atr
+
+        /*
+            let atr = document.createElement('p');
+            let atrInput = document.createElement('input');
+
+            atrInput.type='radio';
+
+            atr.appendChild(atrInput)
+        */
+         
+            divAtributos.appendChild(strr);
+        }
+
+       
+
         
         let h3 = document.createElement('h3')
         h3.innerText = deckJogador[i].nome;
 
+        cartaJ[i].appendChild(imgi);
         cartaJ[i].appendChild(img);
         cartaJ[i].appendChild(h3);
+        cartaJ[i].appendChild(divAtributos)
 
         divJogador.appendChild(cartaJ[i]);
     }
 
+    // let opcoesTexto = "";
+    // for(let atributo in cartaMaquina.atributos) {
+    // opcoesTexto += 
+    //         "<p type='text' name='atributo' value='"+ atributo+ "'>" + atributo + " " + cartaJogador.atributos[atributo] + "</p>";
+    // }
+    // let nome = `<p class="carta-subtitle">${cartaMaquina.nome}</p>`;
+    
+    // divCartaMaquina.innerHTML = moldura + nome + tagHtml + opcoesTexto + "</div>" 
     
 
 
