@@ -99,16 +99,25 @@ function  sortearCarta() {
         cartaJ[i] = document.createElement('div');
         cartaJ[i].classList.add('carta-jogador')
 
-        let imgi = document.createElement('img');
-        imgi.src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png";
+        // let imgi = document.createElement('img');
+        // imgi.src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png";
+        let img = document.createElement('img');
+        img.src= deckJogador[i].imagem;
+        
         
         let h3 = document.createElement('h3')
+        h3.innerText = deckJogador[i].nome;
 
-        cartaJ[i].appendChild(imgi);
+        cartaJ[i].appendChild(img);
         cartaJ[i].appendChild(h3);
 
         divJogador.appendChild(cartaJ[i]);
     }
+
+    
+
+
+
 
    
     
@@ -142,6 +151,26 @@ function  sortearCarta() {
     //exibirCartaJogador();
 }
 
+/* function displayCards(playerDeck, computerDeck) {
+
+    const cartaJ = [];
+
+    for(let i = 0; i < playerDeck.length; i++) {
+
+        cartaJ[i] = document.createElement('div');
+        cartaJ[i].classList.add('carta-jogador')
+
+        let imgi = document.createElement('img');
+        imgi.src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png";
+        
+        let h3 = document.createElement('h3')
+
+        cartaJ[i].appendChild(imgi);
+        cartaJ[i].appendChild(h3);
+
+        divJogador.appendChild(cartaJ[i]);
+    }
+} */
 
 
 // function exibirOpcoes() {
@@ -207,6 +236,8 @@ function exibirCartaJogador() {
     divCartaJogador.innerHTML = moldura + nome + tagHtml + opcoesTexto + "</div>" 
 }
 
+
+
 function exibirCartaMaquina() {
     let divCartaMaquina = document.getElementById("carta-maquina");
     divCartaMaquina.style.backgroundImage=`url(${cartaMaquina.imagem})` 
@@ -224,3 +255,11 @@ function exibirCartaMaquina() {
     divCartaMaquina.innerHTML = moldura + nome + tagHtml + opcoesTexto + "</div>" 
 
 }
+
+const imagem = new Image();
+imagem.onload = function() {
+    alert(this.width + ' x ' + this.height);
+
+}
+
+// imagem.src = "https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png"
