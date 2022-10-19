@@ -99,7 +99,6 @@ function  sortearCarta() {
         cartaJ[i] = document.createElement('div');
         cartaJ[i].classList.add('carta-jogador')
         
-
         let imgi = document.createElement('img');
 
         imgi.src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png";
@@ -110,35 +109,28 @@ function  sortearCarta() {
         let divAtributos = document.createElement('div');
         divAtributos.classList.add('div-atributos');
 
-        
         for(let atributo in deckJogador[i].atributos) {
 
-//dsa
             let atr = "";
 
             atr = "<input type='radio' name='atributo' value='"+atributo+ "'>" + atributo + " " + deckJogador[i].atributos[atributo] + "</br>";
 
-
             let strr = document.createElement('p');
             strr.innerHTML = atr
 
-        /*
-            let atr = document.createElement('p');
-            let atrInput = document.createElement('input');
-
-            atrInput.type='radio';
-
-            atr.appendChild(atrInput)
-        */
-         
+        
             divAtributos.appendChild(strr);
         }
 
-       
-
-        
         let h3 = document.createElement('h3')
         h3.innerText = deckJogador[i].nome;
+        cartaJ[i].onclick= function() {
+            for(let carta in deckJogador) {
+                cartaJ[carta].style.background="";
+            }
+            this.style.background="red"
+        };
+
 
         cartaJ[i].appendChild(imgi);
         cartaJ[i].appendChild(img);
@@ -148,6 +140,9 @@ function  sortearCarta() {
         divJogador.appendChild(cartaJ[i]);
     }
 
+    function click() {
+        console.log("aaaa")
+    }
     // let opcoesTexto = "";
     // for(let atributo in cartaMaquina.atributos) {
     // opcoesTexto += 

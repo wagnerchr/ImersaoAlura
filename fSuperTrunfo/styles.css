@@ -135,7 +135,7 @@ form {
     /* background-image: url("https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png");
     background-repeat: no-repeat; */
 
-  
+  border-radius: 20px;
 
 }
 
@@ -148,6 +148,8 @@ form {
 
     color: #ffffff;
     font-weight: bold;
+
+    
 
    
     
