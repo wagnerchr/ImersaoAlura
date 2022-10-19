@@ -113,7 +113,7 @@ form {
     justify-content: space-between;
 }
 
-#deck-jogador {
+#deck-jogador, #deck-computador {
     height: 600px;
    display: flex;
    flex-direction: row;
@@ -122,7 +122,7 @@ form {
     
 }
 
-.carta-jogador {
+.carta-jogador, .carta-computador {
     /* background-color: aliceblue; */
     width: 373px;
     height: 519px;
@@ -139,7 +139,7 @@ form {
 
 }
 
-.carta-jogador h3 {
+.carta-jogador h3, .carta-computador h3 {
     position: absolute;
     text-align: center;
     top: 275px;
@@ -147,19 +147,8 @@ form {
     width: 100%;
 
     color: #ffffff;
-    font-weight: bold;
-
-    
-
-   
-    
+    font-weight: bold; 
 }
-
-/* .carta-jogador img {
-    width: 373px;
-    height: 373px;
-    position: relative;
-} */
 
 .card-photo {
     position: absolute;
@@ -179,9 +168,7 @@ form {
     width: 312px;
     height: 152px;
     
-    color: white;
-    
-    
+    color: white; 
 }
 
 .div-atributos p {
@@ -189,8 +176,6 @@ form {
  
     margin: 10px 10px 5px 10px;
 }
-
-
 
 .carta-status p {
     margin-bottom: 2rem;

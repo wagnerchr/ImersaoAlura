@@ -76,7 +76,7 @@ const deckComputador = [];
 // Sortear cartas
 function  sortearCarta() {
 
-    // Distribuir Cartas
+    // Distribuindo cartas
     for(let i = 0; i < 3; i++) {
 
         let numeroCartaJogador = parseInt(Math.random() * ncartas)  // sorteia index
@@ -90,9 +90,23 @@ function  sortearCarta() {
         ncartas--;  // index -1 da pilha
     }
 
+    
     // Mostrando Cartas
-        const cartaJ = [];
+      
         let divJogador = document.getElementById('deck-jogador');
+        let divComputador = document.getElementById('deck-computador');
+
+    // Carregando Cartas Jogador
+
+    const cartaJ = [];
+    const cartaC = [];
+
+        JogadorCartas(divJogador,  cartaJ);
+        ComputadorCartas(divComputador, cartaC);   
+        
+    }
+
+    function JogadorCartas(divJogador, cartaJ) {
 
     for(let i = 0; i < deckJogador.length; i++) {
 
@@ -124,6 +138,12 @@ function  sortearCarta() {
 
         let h3 = document.createElement('h3')
         h3.innerText = deckJogador[i].nome;
+       
+        cartaJ[i].appendChild(imgi);
+        cartaJ[i].appendChild(img);
+        cartaJ[i].appendChild(h3);
+        cartaJ[i].appendChild(divAtributos)
+
         cartaJ[i].onclick= function() {
             for(let carta in deckJogador) {
                 cartaJ[carta].style.background="";
@@ -131,18 +151,10 @@ function  sortearCarta() {
             this.style.background="red"
         };
 
-
-        cartaJ[i].appendChild(imgi);
-        cartaJ[i].appendChild(img);
-        cartaJ[i].appendChild(h3);
-        cartaJ[i].appendChild(divAtributos)
-
         divJogador.appendChild(cartaJ[i]);
     }
 
-    function click() {
-        console.log("aaaa")
-    }
+    
     // let opcoesTexto = "";
     // for(let atributo in cartaMaquina.atributos) {
     // opcoesTexto += 
@@ -187,6 +199,59 @@ function  sortearCarta() {
     // exibirOpcoes();
     //exibirCartaJogador();
 }
+    function ComputadorCartas(divComputador, cartaC) {
+        for(let i = 0; i < deckComputador.length; i++) {
+
+            cartaC[i] = document.createElement('div');
+            cartaC[i].classList.add('carta-computador')
+            
+            let imgi = document.createElement('img');
+    
+            imgi.src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png";
+            let img = document.createElement('img');
+            img.src= deckComputador[i].imagem;
+            img.classList.add('card-photo')
+
+           
+    
+            let divAtributos = document.createElement('div');
+            divAtributos.classList.add('div-atributos');
+    
+            // for(let atributo in deckComputador[i].atributos) {
+    
+            //     let atr = "";
+    
+            //     atr = "<input type='radio' name='atributo' value='"+atributo+ "'>" + atributo + " " + deckJogador[i].atributos[atributo] + "</br>";
+    
+            //     let strr = document.createElement('p');
+            //     strr.innerHTML = atr
+    
+            
+            //     divAtributos.appendChild(strr);
+            // }
+    
+            let h3 = document.createElement('h3')
+            h3.innerText = deckComputador[i].nome;
+
+            // Escondendo detalhes
+                img.src="https://cdn.vox-cdn.com/thumbor/-famZFxgMFo2h1HQ5UjIIcBszrI=/0x0:1920x1080/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/53254027/who_pokemon.0.jpg"
+                h3.innerHTML = "???";
+           
+            cartaC[i].appendChild(imgi);
+            cartaC[i].appendChild(img);
+            cartaC[i].appendChild(h3);
+            cartaC[i].appendChild(divAtributos)
+    
+            cartaC[i].onclick= function() {
+                for(let carta in deckComputador) {
+                    cartaC[carta].style.background="";
+                }
+                this.style.background="red"
+            };
+    
+            divComputador.appendChild(cartaC[i]);
+        }
+    }
 
 /* function displayCards(playerDeck, computerDeck) {
 
