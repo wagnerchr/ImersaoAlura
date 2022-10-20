@@ -64,125 +64,140 @@ magia: 0
 // --- 
 
 let cartas = [carta01, carta02, carta03, carta04, carta05, carta06];
-let ncartas = cartas.length;
+
 
 let cartaMaquina;
 let cartaJogador;
 
+// Decks com os objs
 const deckJogador = [];
 const deckComputador = [];
 
+// Deck com divs
+const cartaJ = [];
 
-// Sortear cartas
-function  sortearCarta() {
+// INICIO GAME
+function inicioJogo() {
 
     // Distribuindo cartas
-    for(let i = 0; i < 3; i++) {
+    let numbercards = Math.floor(cartas.length / 2)       // DANGER, IRÁ MUDAR 
+    let ncartas = cartas.length;      
 
-        let numeroCartaJogador = parseInt(Math.random() * ncartas)  // sorteia index
-        deckJogador[i] = cartas[numeroCartaJogador];    // add carta ao deck
-        cartas.splice(numeroCartaJogador, 1); // remove carta da pilha
+    for(let i = 0; i < numbercards; i++) {
+
+        // Sortear index, adicionar carta ao deck, tirar do monte
+
+        let numeroCartaJogador = parseInt(Math.random() * ncartas)  
+        deckJogador[i] = cartas[numeroCartaJogador];   
+        cartas.splice(numeroCartaJogador, 1); 
         ncartas--;
 
         let numeroCartaComputador = parseInt(Math.random() * ncartas)
         deckComputador[i] = cartas[numeroCartaComputador];
-        cartas.splice(numeroCartaComputador, 1); // remove carta da pilha
-        ncartas--;  // index -1 da pilha
+        cartas.splice(numeroCartaComputador, 1); 
+        ncartas--;   
     }
 
-    
-    // Mostrando Cartas
+    // Mostrar Cartas 
       
         let divJogador = document.getElementById('deck-jogador');
         let divComputador = document.getElementById('deck-computador');
 
     // Carregando Cartas Jogador
 
-    const cartaJ = [];
+    
     const cartaC = [];
 
         JogadorCartas(divJogador,  cartaJ);
-        ComputadorCartas(divComputador, cartaC);   
-        
-    }
+        ComputadorCartas(divComputador, cartaC);       
 
+       
+}
+
+// DISPLAY CARDS
     function JogadorCartas(divJogador, cartaJ) {
 
+    // Cria divs para cada carta do deck
     for(let i = 0; i < deckJogador.length; i++) {
 
         cartaJ[i] = document.createElement('div');
         cartaJ[i].classList.add('carta-jogador')
         
-        let imgi = document.createElement('img');
+        // modelo carta
+            let imgi = document.createElement('img');
+            imgi.src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png";
 
-        imgi.src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png";
-        let img = document.createElement('img');
-        img.src= deckJogador[i].imagem;
-        img.classList.add('card-photo')
+        // foto carta
+            let img = document.createElement('img');
+            img.src = deckJogador[i].imagem;
+            img.classList.add('card-photo')
 
-        let divAtributos = document.createElement('div');
-        divAtributos.classList.add('div-atributos');
+        // atributos da carta
+            let divAtributos = document.createElement('div');
+            divAtributos.classList.add('div-atributos');
+            
+            for(let atributo in deckJogador[i].atributos) {
 
-        for(let atributo in deckJogador[i].atributos) {
+                let atr = "";
+                atr = "<input type='radio' name='atributo' value='"+atributo+ "'>" + atributo + " " + deckJogador[i].atributos[atributo] + "</br>";
 
-            let atr = "";
+                let strr = document.createElement('p');
+                strr.innerHTML = atr
 
-            atr = "<input type='radio' name='atributo' value='"+atributo+ "'>" + atributo + " " + deckJogador[i].atributos[atributo] + "</br>";
+                divAtributos.appendChild(strr);
+            }
 
-            let strr = document.createElement('p');
-            strr.innerHTML = atr
+        // nome da carta
+            let h3 = document.createElement('h3')
+            h3.innerText = deckJogador[i].nome;
 
+        // funcão onclick
+            cartaJ[i].onclick= function() {
+                for(let carta in deckJogador) {
+                    cartaJ[carta].style.background="";
+                }
+                this.style.background="red"
+            };
         
-            divAtributos.appendChild(strr);
-        }
-
-        let h3 = document.createElement('h3')
-        h3.innerText = deckJogador[i].nome;
-       
+        // Adicionando elementos à div
         cartaJ[i].appendChild(imgi);
         cartaJ[i].appendChild(img);
         cartaJ[i].appendChild(h3);
         cartaJ[i].appendChild(divAtributos)
 
-        cartaJ[i].onclick= function() {
-            for(let carta in deckJogador) {
-                cartaJ[carta].style.background="";
-            }
-            this.style.background="red"
-        };
-
+        // Carta adcionada ao container deckJogador
         divJogador.appendChild(cartaJ[i]);
     }
 
-    
+
     // let opcoesTexto = "";
     // for(let atributo in cartaMaquina.atributos) {
     // opcoesTexto += 
     //         "<p type='text' name='atributo' value='"+ atributo+ "'>" + atributo + " " + cartaJogador.atributos[atributo] + "</p>";
     // }
     // let nome = `<p class="carta-subtitle">${cartaMaquina.nome}</p>`;
-    
+
     // divCartaMaquina.innerHTML = moldura + nome + tagHtml + opcoesTexto + "</div>" 
-    
 
 
 
 
-   
-    
 
-//     <div class="carta-jogador" >
-//     <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" />
-//     <h3></h3>
-// </div>
-// <div class="carta-jogador" >
-//     <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" />                 
-//     <h3></h3>
-// </div>
-// <div class="carta-jogador" >
-//     <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" />
+
+
+
+    //     <div class="carta-jogador" >
+    //     <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" />
+    //     <h3></h3>
+    // </div>
+    // <div class="carta-jogador" >
+    //     <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" />                 
+    //     <h3></h3>
+    // </div>
+    // <div class="carta-jogador" >
+    //     <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" />
         
-//     <h3></h3>
+    //     <h3></h3>
 
 
 
@@ -192,13 +207,13 @@ function  sortearCarta() {
 
     // console.log(cartaJogador)
 
-/*
+    /*
     document.getElementById("btnSortear").disabled = true;
     document.getElementById("btnJogar").disabled = false;
-*/
+    */
     // exibirOpcoes();
     //exibirCartaJogador();
-}
+    }
     function ComputadorCartas(divComputador, cartaC) {
         for(let i = 0; i < deckComputador.length; i++) {
 
@@ -206,87 +221,107 @@ function  sortearCarta() {
             cartaC[i].classList.add('carta-computador')
             
             let imgi = document.createElement('img');
-    
+
             imgi.src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png";
             let img = document.createElement('img');
             img.src= deckComputador[i].imagem;
             img.classList.add('card-photo')
 
-           
-    
+            
+
             let divAtributos = document.createElement('div');
             divAtributos.classList.add('div-atributos');
-    
+
             // for(let atributo in deckComputador[i].atributos) {
-    
+
             //     let atr = "";
-    
+
             //     atr = "<input type='radio' name='atributo' value='"+atributo+ "'>" + atributo + " " + deckJogador[i].atributos[atributo] + "</br>";
-    
+
             //     let strr = document.createElement('p');
             //     strr.innerHTML = atr
-    
+
             
             //     divAtributos.appendChild(strr);
             // }
-    
+
             let h3 = document.createElement('h3')
             h3.innerText = deckComputador[i].nome;
 
             // Escondendo detalhes
                 img.src="https://cdn.vox-cdn.com/thumbor/-famZFxgMFo2h1HQ5UjIIcBszrI=/0x0:1920x1080/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/53254027/who_pokemon.0.jpg"
                 h3.innerHTML = "???";
-           
+            
             cartaC[i].appendChild(imgi);
             cartaC[i].appendChild(img);
             cartaC[i].appendChild(h3);
             cartaC[i].appendChild(divAtributos)
-    
-            cartaC[i].onclick= function() {
-                for(let carta in deckComputador) {
-                    cartaC[carta].style.background="";
-                }
-                this.style.background="red"
-            };
-    
+
+            // cartaC[i].onclick= function() {
+            //     for(let carta in deckComputador) {
+            //         cartaC[carta].style.background="";
+            //     }
+            //     this.style.background="red"
+            // };
+
             divComputador.appendChild(cartaC[i]);
         }
-    }
-
-/* function displayCards(playerDeck, computerDeck) {
-
-    const cartaJ = [];
-
-    for(let i = 0; i < playerDeck.length; i++) {
-
-        cartaJ[i] = document.createElement('div');
-        cartaJ[i].classList.add('carta-jogador')
-
-        let imgi = document.createElement('img');
-        imgi.src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png";
         
-        let h3 = document.createElement('h3')
-
-        cartaJ[i].appendChild(imgi);
-        cartaJ[i].appendChild(h3);
-
-        divJogador.appendChild(cartaJ[i]);
     }
-} */
+
+function jogar() {
+
+    console.log(deckJogador[0].nome)
+
+    for(carta of cartaJ) {
+        if(carta.style.background == 'red') {
+            console.log("peguei!")
+           
+        }
+        
+    }
+
+    for(carta of deckJogador) {
+
+    }
+    
+  
+}
+    // let atributoSelecionado = obtemAtributoSelecionado();
 
 
-// function exibirOpcoes() {
-//     const opcoes = document.getElementById("opcoes");
-//     let opcoesTexto = ""
+    // let divResultado = document.getElementById("resultado")
+    // // let elementoResultado = document.getElementById("resultado");
+    // let valorCartaJogador = cartaJogador.atributos[atributoSelecionado] 
+    // let valorCartaMaquina = cartaMaquina.atributos[atributoSelecionado]
 
-//     for(let atributo in cartaJogador.atributos) {
-//         opcoesTexto += 
-//             "<input type='radio' name='atributo' value='"+atributo+"'>" + atributo;
-//     }
-//     opcoes.innerHTML = opcoesTexto;
+    // if(valorCartaJogador > valorCartaMaquina) {
+    //     // elementoResultado.innerHTML = "Venceu :)"
+    //     htmlResultado = "<p class='resultado-final'>Venceu! :)</p>"
+    // } else if(valorCartaMaquina > valorCartaJogador) {
+    //     // elementoResultado.innerHTML = "voce perdeu '-'"
+    //     htmlResultado = "<p class='resultado-final'>Perdeu :(</p>"
+    // } else {
+    //     // elementoResultado.innerHTML = "empate :/"
+    //     htmlResultado = "<p class='resultado-final'>Empatou! :/</p>"
+    // }
+
+    // divResultado.innerHTML = htmlResultado;
+    // document.getElementById("btnJogar").disabled = true;
+    // exibirCartaMaquina();
+
+
+// function TurnoComputador() {
+
+//     let indexEscolhido =  parseInt(Math.random() * deckComputador.length);
+//     let cartaEscolhida = deckComputador[indexEscolhido];
+
+//     console.log("Escolhido:" + cartaEscolhida.nome);
 // }
 
-function obtemAtributoSelecionado() {
+
+function obterAtributoCarta() {
+
     let radioAtributos = document.getElementsByName("atributo");
 
     for(let i = 0; i < radioAtributos.length; i++) {
@@ -294,31 +329,6 @@ function obtemAtributoSelecionado() {
             return radioAtributos[i].value
         }
     }
-}
-
-function jogar() {
-
-    let atributoSelecionado = obtemAtributoSelecionado();
-    let divResultado = document.getElementById("resultado")
-    // let elementoResultado = document.getElementById("resultado");
-    let valorCartaJogador = cartaJogador.atributos[atributoSelecionado] 
-    let valorCartaMaquina = cartaMaquina.atributos[atributoSelecionado]
-
-    if(valorCartaJogador > valorCartaMaquina) {
-        // elementoResultado.innerHTML = "Venceu :)"
-        htmlResultado = "<p class='resultado-final'>Venceu! :)</p>"
-    } else if(valorCartaMaquina > valorCartaJogador) {
-        // elementoResultado.innerHTML = "voce perdeu '-'"
-        htmlResultado = "<p class='resultado-final'>Perdeu :(</p>"
-    } else {
-        // elementoResultado.innerHTML = "empate :/"
-        htmlResultado = "<p class='resultado-final'>Empatou! :/</p>"
-    }
-
-    divResultado.innerHTML = htmlResultado;
-    document.getElementById("btnJogar").disabled = true;
-    exibirCartaMaquina();
-
 }
   
 function exibirCartaJogador() {
