@@ -111,7 +111,6 @@ function inicioJogo() {
         JogadorCartas(divJogador,  cartaJ);
         ComputadorCartas(divComputador, cartaC);       
 
-       
 }
 
 // DISPLAY CARDS
@@ -276,15 +275,16 @@ function jogar() {
     for(carta of cartaJ) {
         if(carta.style.background == 'red') {
             console.log("peguei!")
-           
-        }
-        
-    }
-
-    for(carta of deckJogador) {
-
-    }
-    
+            let cartinhauwu = carta.getElementsByTagName('h3')
+          
+            for(cards of deckJogador) {
+                if(cards.nome == cartinhauwu[0].innerText) {
+                    console.log(cards)
+                }
+            }
+            
+        }     
+    }   
   
 }
     // let atributoSelecionado = obtemAtributoSelecionado();
