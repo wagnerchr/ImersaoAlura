@@ -270,8 +270,38 @@ function inicioJogo() {
 
 function jogar() {
 
-    console.log(deckJogador[0].nome)
+    let cartaEscolhida = AchaCarta();
+    let atributoEscolhido = obterAtributoCarta();
 
+    console.log("AKI AKI AKI!!! : " + atributoEscolhido.atributos)
+    // MOSTRA CARTA, ATRIBUTO E VALOR ATRIBUTO
+    console.log("Carta escolhida: " + cartaEscolhida.nome
+        + "\n Atributo escolhido: " + atributoEscolhido +
+        "\n Valor atributo: " + cartaEscolhida.atributos.atributoEscolhido);
+    
+    for(key in cartaEscolhida.atributos) {
+        if(key == atributoEscolhido) {
+            console.log("Valor da: " + atributoEscolhido + " do boneco: " + cartaEscolhida.atributos[key])
+        }
+        
+    }
+    
+
+
+    let escolhaComputador;
+    let valoresCartas = [];
+
+    // for(carta of deckComputador) {
+
+    //     valoresCartas = carta.atributo.
+    // }
+
+
+      console.log(cartaEscolhida.nome);
+  
+}
+
+function AchaCarta() {
     for(carta of cartaJ) {
         if(carta.style.background == 'red') {
             console.log("peguei!")
@@ -279,13 +309,12 @@ function jogar() {
           
             for(cards of deckJogador) {
                 if(cards.nome == cartinhauwu[0].innerText) {
-                    console.log(cards)
+                    return(cards);
                 }
-            }
-            
+            }       
         }     
-    }   
-  
+    } 
+
 }
     // let atributoSelecionado = obtemAtributoSelecionado();
 
@@ -323,10 +352,11 @@ function jogar() {
 function obterAtributoCarta() {
 
     let radioAtributos = document.getElementsByName("atributo");
+  
 
     for(let i = 0; i < radioAtributos.length; i++) {
         if(radioAtributos[i].checked == true) {
-            return radioAtributos[i].value
+            return radioAtributos[i].value;
         }
     }
 }
