@@ -75,6 +75,7 @@ const deckComputador = [];
 
 // Deck com divs
 const cartaJ = [];
+const cartaC = [];
 
 // INICIO GAME
 function inicioJogo() {
@@ -104,9 +105,6 @@ function inicioJogo() {
         let divComputador = document.getElementById('deck-computador');
 
     // Carregando Cartas Jogador
-
-    
-    const cartaC = [];
 
         JogadorCartas(divJogador,  cartaJ);
         ComputadorCartas(divComputador, cartaC);       
@@ -167,52 +165,8 @@ function inicioJogo() {
         // Carta adcionada ao container deckJogador
         divJogador.appendChild(cartaJ[i]);
     }
-
-
-    // let opcoesTexto = "";
-    // for(let atributo in cartaMaquina.atributos) {
-    // opcoesTexto += 
-    //         "<p type='text' name='atributo' value='"+ atributo+ "'>" + atributo + " " + cartaJogador.atributos[atributo] + "</p>";
-    // }
-    // let nome = `<p class="carta-subtitle">${cartaMaquina.nome}</p>`;
-
-    // divCartaMaquina.innerHTML = moldura + nome + tagHtml + opcoesTexto + "</div>" 
-
-
-
-
-
-
-
-
-    //     <div class="carta-jogador" >
-    //     <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" />
-    //     <h3></h3>
-    // </div>
-    // <div class="carta-jogador" >
-    //     <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" />                 
-    //     <h3></h3>
-    // </div>
-    // <div class="carta-jogador" >
-    //     <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" />
-        
-    //     <h3></h3>
-
-
-
-
-
-
-
-    // console.log(cartaJogador)
-
-    /*
-    document.getElementById("btnSortear").disabled = true;
-    document.getElementById("btnJogar").disabled = false;
-    */
-    // exibirOpcoes();
-    //exibirCartaJogador();
     }
+
     function ComputadorCartas(divComputador, cartaC) {
         for(let i = 0; i < deckComputador.length; i++) {
 
@@ -270,52 +224,78 @@ function inicioJogo() {
 
 function jogar() {
 
-    let cartaEscolhida = AchaCarta();
-    let atributoEscolhido = obterAtributoCarta();
+    let cartaEscolhida = AchaCarta(cartaJ);         // 
+    let atributoEscolhido = obterAtributoCarta();   // Seleciona atributo escolhido no radio buttom
+    let valorAtributo;
 
-    console.log("AKI AKI AKI!!! : " + atributoEscolhido.atributos)
-    // MOSTRA CARTA, ATRIBUTO E VALOR ATRIBUTO
-    console.log("Carta escolhida: " + cartaEscolhida.nome
-        + "\n Atributo escolhido: " + atributoEscolhido +
-        "\n Valor atributo: " + cartaEscolhida.atributos.atributoEscolhido);
-    
     for(key in cartaEscolhida.atributos) {
         if(key == atributoEscolhido) {
-            console.log("Valor da: " + atributoEscolhido + " do boneco: " + cartaEscolhida.atributos[key])
+            valorAtributo = cartaEscolhida.atributos[key]
         }
         
     }
-    
 
+// MOSTRA CARTA, ATRIBUTO E VALOR ATRIBUTO
+    console.log("Carta escolhida: " + cartaEscolhida.nome
+    + "\n Atributo escolhido: " + atributoEscolhido +
+    "\n Valor atributo: " + valorAtributo);
+        
 
-    let escolhaComputador;
-    let valoresCartas = [];
-
-    // for(carta of deckComputador) {
-
-    //     valoresCartas = carta.atributo.
+    // for(let i = 0; i < deckComputador.length; i++) {
+    //     for(let j = 0; j < deckComputador[i].atributos.length; j++) {
+    //         console.log(deckComputador[i].atributos)
+    //     }
     // }
 
+    let atributoRodada = atributoEscolhido
+    let valoresRodada = [];
 
-      console.log(cartaEscolhida.nome);
+    for(carta in deckComputador) {
+        let atributoCarta = deckComputador[carta].atributos[atributoRodada];
+        valoresRodada.push(atributoCarta)
+    }
+    
+    console.log("Maior valor encontrado: " + Math.max(...valoresRodada)) // Spread operator works!
+
+   
+    
+   
+    
+
+    
+    let valoresCartas = [];
   
 }
 
-function AchaCarta() {
-    for(carta of cartaJ) {
-        if(carta.style.background == 'red') {
-            console.log("peguei!")
-            let cartinhauwu = carta.getElementsByTagName('h3')
-          
-            for(cards of deckJogador) {
-                if(cards.nome == cartinhauwu[0].innerText) {
-                    return(cards);
-                }
-            }       
-        }     
-    } 
+// ACHA CARTA 
+    function AchaCarta(arrayDivs) {
+        for(carta of arrayDivs) {
+            if(carta.style.background == 'red') {
+                let cartinhauwu = carta.getElementsByTagName('h3')
+            
+                for(cards of deckJogador) {
+                    if(cards.nome == cartinhauwu[0].innerText) {
+                        return(cards);
+                    }
+                }       
+            }     
+        } 
+    }
 
-}
+// OBTÉM ATRIBUTO SELECIONADO DA CARTA
+    function obterAtributoCarta() {
+
+        let radioAtributos = document.getElementsByName("atributo");
+      
+        for(let i = 0; i < radioAtributos.length; i++) {
+            if(radioAtributos[i].checked == true) {
+                return radioAtributos[i].value;
+            }
+        }
+    }
+
+
+
     // let atributoSelecionado = obtemAtributoSelecionado();
 
 
@@ -349,17 +329,7 @@ function AchaCarta() {
 // }
 
 
-function obterAtributoCarta() {
 
-    let radioAtributos = document.getElementsByName("atributo");
-  
-
-    for(let i = 0; i < radioAtributos.length; i++) {
-        if(radioAtributos[i].checked == true) {
-            return radioAtributos[i].value;
-        }
-    }
-}
   
 function exibirCartaJogador() {
     let divCartaJogador = document.getElementById("carta-jogador");
